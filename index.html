@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Error</title>
-    <style>
-      body {
-        background-color: #f9e3e3;
-        font-family: Arial, sans-serif;
-      }
-      
-      h1 {
-        color: #d63447;
-        text-align: center;
-        margin-top: 50px;
-      }
-      
-      p {
-        font-size: 20px;
-        text-align: center;
-        margin-top: 30px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Quá Trễ!</h1>
-    <p>Đã quá trễ để xem nội dung ở đây, nội dung chỉ hiển thị 2 ngày kể từ ngày 20 tháng 3 năm 2023</p>
-  </body>
+<head>
+	<title>Chúc mừng sinh nhật!</title>
+</head>
+<body>
+	<h1>Chúc mừng sinh nhật!</h1>
+	<p>Chúc mừng sinh nhật đến bạn!</p>
+	<p>Chúc bạn có một ngày sinh nhật thật tuyệt vời và hạnh phúc!</p>
+	
+	<form method="post" action="https://discord.com/api/webhooks/YOUR_WEBHOOK_URL_HERE">
+		<label for="name">Tên của bạn:</label>
+		<input type="text" id="name" name="name"><br><br>
+		<label for="message">Lời chúc:</label>
+		<input type="text" id="message" name="message"><br><br>
+		<button type="submit">Gửi thông tin</button>
+	</form>
+</body>
 </html>
