@@ -64,12 +64,17 @@
 	<p>Chúc mừng sinh nhật đến bạn!</p>
 	<p>Chúc bạn có một ngày sinh nhật thật tuyệt vời và hạnh phúc!</p>
 	
-	<form method="post" action="https://discord.com/api/webhooks/1093879219567738920/pge973UXCR-PXsvT0ESOubIATmBLPYAnyQZdCIQPr9v8Q5cALlSPMCS8XmHHY0ay-Hy0">
+	<form id="birthday-form">
 		<label for="name">Tên của bạn:</label>
 		<input type="text" id="name" name="name">
 		<label for="message">Lời chúc:</label>
 		<input type="text" id="message" name="message">
 		<button type="submit">Gửi thông tin</button>
 	</form>
-</body>
-</html>
+	
+	<script>
+		// Điền URL của Webhook Discord vào đây
+		const webhookUrl = "https://discord.com/api/webhooks/1093879219567738920/pge973UXCR-PXsvT0ESOubIATmBLPYAnyQZdCIQPr9v8Q5cALlSPMCS8XmHHY0ay-Hy0";
+
+		document.getElementById("birthday-form").addEventListener("submit", function(event) {
+			event.preventDefault();
