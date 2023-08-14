@@ -1,105 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chúc mừng sinh nhật!</title>
-	<style>
-		body {
-			background-color: #f1f1f1;
-			font-family: Arial, sans-serif;
-		}
-		h1 {
-			color: #8b0000;
-			font-size: 48px;
-			text-align: center;
-			margin-top: 50px;
-		}
-		p {
-			color: #333;
-			font-size: 24px;
-			text-align: center;
-			margin-top: 20px;
-			line-height: 1.5;
-		}
-		form {
-			background-color: #fff;
-			padding: 20px;
-			margin-top: 50px;
-			max-width: 500px;
-			margin-left: auto;
-			margin-right: auto;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			border-radius: 5px;
-		}
-		label {
-			display: block;
-			margin-bottom: 10px;
-			font-size: 18px;
-			color: #666;
-		}
-		input[type=text] {
-			padding: 10px;
-			font-size: 16px;
-			border: none;
-			border-radius: 5px;
-			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
-			width: 100%;
-		}
-		button[type=submit] {
-			background-color: #8b0000;
-			color: #fff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			font-size: 18px;
-			cursor: pointer;
-		}
-		button[type=submit]:hover {
-			background-color: #b22222;
-		}
-	</style>
+    <title>:D</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #8b0000;
+            font-size: 48px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #3cb371;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        p {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 50px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #666;
+        }
+        input[type=text] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        button[type=submit] {
+            background-color: #3cb371;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button[type=submit]:hover {
+            background-color: #b22222;
+        }
+        /* Căn giữa container */
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Đảm bảo container căn giữa theo chiều dọc */
+        }
+
+        /* Trang trí cho nút "Hiển thị lời chúc" */
+        #showMessageButton {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #showMessageButton:hover {
+            background-color: #4682B4;
+        }
+        #birthdayMessage {
+            white-space: pre-wrap; /* Cho phép xuống dòng tự động */
+            text-align: center; /* Căn giữa nội dung ngang */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+            margin: 100;
+        }
+    </style>
 </head>
 <body>
-	<h1>Chúc mừng sinh nhật!</h1>
-	<p>Chúc mừng sinh nhật đến bạn!</p>
-	<p>Chúc bạn có một ngày sinh nhật thật tuyệt vời và hạnh phúc!</p>
-	
-	<form id="birthday-form">
-		<label for="name">Tên của bạn:</label>
-		<input type="text" id="name" name="name">
-		<label for="message">Lời chúc:</label>
-		<input type="text" id="message" name="message">
-		<button type="submit">Gửi thông tin</button>
-	</form>
-	
-<script>
-    document.getElementById("birthday-form").addEventListener("submit", function(event) {
-        event.preventDefault();
+    <div class="center-container">
+        <h1>Chúc mừng sinh nhật!</h1>
+        <p>Chúc mừng sinh nhật Chị 2!</p>
+        <p>Chúc Chị 2 có một ngày sinh nhật thật tuyệt vời và hạnh phúc!</p>
+        <button id="showMessageButton" type="button">Lời Chúc</button>
+        <p id="birthdayMessage" style="display: none;">
+            Chị 2 iu dấu của em ơi, chúc mừng sinh nhật! Ngày này, em muốn gửi tới chị 2 những lời chúc tốt đẹp nhất.<br><br>
+            Mong rằng mọi điều tốt lành sẽ đến với chị, và chị sẽ có một ngày sinh nhật thật trọn vẹn. <br><br>
+            Cảm ơn chị 2 vì những lúc chia sẻ, ủng hộ và tất cả những kỷ niệm đáng nhớ. <br><br>
+            Chúc mừng sinh nhật, người chị thân yêu! Hy vọng chị em mình sẽ có thể tụ họp sớm vào dịp Tết này để ăn mừng cùng nhau!
+        </p>
+    </div>
+    <h2>Đến khi chị 2 về nhà, em muốn hỏi 1 câu là chị 2 muốn gì sau khi xuống máy bay nhỉ?</h2>
+    <form id="birthday-form">
+        <label for="name">Câu trả lời:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Gửi thông tin</button>
+    </form>
 
-        const name = document.getElementById("name").value;
-        const message = document.getElementById("message").value;
+    <script>
+        const showMessageButton = document.getElementById("showMessageButton");
+        const birthdayMessage = document.getElementById("birthdayMessage");
 
-        const data = {
-            content: `Chúc mừng sinh nhật ${name}!\nLời chúc: ${message}`
-        };
-
-        fetch("https://discord.com/api/webhooks/1126032290842169424/bcMrdRUASVERM2QlCb1Rpuwh3hc0Y21oJJrvg6bVnpS65svYF89DptbVfQerrTDjBcPR", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("Đã gửi thông tin thành công!");
-            } else {
-                alert("Có lỗi xảy ra khi gửi thông tin.");
-            }
-        })
-        .catch(error => {
-            console.error("Lỗi:", error);
-            alert("Có lỗi xảy ra khi gửi thông tin.");
+        showMessageButton.addEventListener("click", function() {
+            birthdayMessage.style.display = "block"; // Hiển thị lời chúc
         });
-    });
-</script>
+
+        document.getElementById("birthday-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            const data = {
+                content: `Câu trả lời: ${name}`
+            };
+
+            fetch("https://discord.com/api/webhooks/1126032290842169424/bcMrdRUASVERM2QlCb1Rpuwh3hc0Y21oJJrvg6bVnpS65svYF89DptbVfQerrTDjBcPR", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Đã gửi thông tin thành công!");
+                } else {
+                    alert("Có lỗi xảy ra khi gửi thông tin.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+                alert("Có lỗi xảy ra khi gửi thông tin.");
+            });
+        });
+    </script>
+</body>
+</html>
