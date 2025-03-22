@@ -62,3 +62,4 @@ Hoạt động tốt nhất trên các trình duyệt hiện đại:
 - Thiết kế tương thích và điều chỉnh theo kích thước màn hình
 - Tất cả các trường văn bản đều có thể chỉnh sửa
 - Tạo ngẫu nhiên duy trì phạm vi điểm số hợp lý
+- Chỉ tạo kết quả "ảo". Không gửi đến server
