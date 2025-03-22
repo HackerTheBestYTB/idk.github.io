@@ -1,4 +1,6 @@
 # Tạo ra kết quả fake cho bài thi Azota
+![Tạo ra kết quả fake cho bài thi Azota](./image.png)
+
 ## Tính Năng
 
 - Hiển thị kết quả bài thi với thông tin có thể tùy chỉnh
