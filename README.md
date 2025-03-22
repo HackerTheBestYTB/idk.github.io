@@ -30,6 +30,11 @@ Bạn có thể sửa đổi các trường sau trong biểu mẫu:
 - **Cập nhật**: Áp dụng các thay đổi vào phần hiển thị
 - **Tải ảnh xuống**: Lưu phần hiển thị kết quả dưới dạng ảnh PNG
 
+### Chức Năng Ngẫu Nhiên
+
+-Tự động tính toán theo thang điểm 10 theo số câu chỉ định(18/20 là 9/10 điểm)
+-Luôn ngẫu nhiên điểm trên 8/10
+
 ### Thanh Trượt Thời Gian
 
 - Sử dụng thanh trượt để điều chỉnh thời gian làm bài
