@@ -68,3 +68,6 @@ Hoạt động tốt nhất trên các trình duyệt hiện đại:
 - Tất cả các trường văn bản đều có thể chỉnh sửa
 - Tạo ngẫu nhiên duy trì phạm vi điểm số hợp lý
 - Chỉ tạo kết quả "ảo". Không gửi đến server
+
+## Các Thay Đổi(Update)
+- Hiện tại chưa có thay đổi gì
