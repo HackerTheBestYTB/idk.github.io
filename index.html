@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <!-- Add Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 550px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.06) 0px 1px 2px;
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+
+            .container {
+                max-width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 16px;
+            }
+        }
+
+        .header h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .score {
+            text-align: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .quiz-info {
+            margin: 12px 0;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+
+            .quiz-info {
+                margin: 8px 0;
+            }
+
+            .info-row {
+                padding: 4px 0;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+
+            .container {
+                max-width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 16px;
+            }
+
+            .header h2 {
+                font-size: 1.125rem;
+                padding-top: 12px;
+                font-weight: 700;
+            }
+
+            .score {
+                padding: 8px;
+                border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            }
+
+            .score span:first-child {
+                font-size: 1rem;
+                font-weight: 500;
+                margin-right: 8px;
+            }
+
+            .score span:last-child {
+                font-size: 25px;
+                font-weight: 700;  /* Tăng từ 500 lên 700 */
+            }
+
+            .exam-title {
+                text-align: center;
+                margin-top: 12px;
+                padding: 0 20px;
+                font-weight: 700;  /* Tăng từ 500 lên 700 */
+                font-size: 1rem;
+                color: #000;  /* Thêm màu đen đậm */
+            }
+
+            .info-value {
+                margin-left: auto;
+                font-weight: 700;  /* Tăng từ 500 lên 700 */
+                color: #000;  /* Thêm màu đen đậm */
+            }
+
+            .quiz-info {
+                margin: 12px 20px;
+            }
+
+            .info-row {
+                display: flex;
+                align-items: center;
+                margin-top: 4px;
+                padding: 2px 0;
+            }
+
+            .info-label {
+                display: flex;
+                align-items: center;
+                font-size: 1rem;
+                color: #333;  /* Thêm màu xám đậm cho label */
+            }
+
+            .info-label svg {
+                margin-left: auto;
+                font-weight: 500;
+            }
+
+            .button-container {
+                padding: 12px 20px;
+            }
+
+            .view-answers {
+                width: 100%;
+                padding: 8px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Tablet styles */
+        @media screen and (min-width: 601px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+
+        .header {
+            text-align: center;
+            padding-top: 12px;
+        }
+
+        .header h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .exam-title {
+            text-align: center;
+            padding-top: 12px;
+        }
+
+        .exam-title h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .score {
+            text-align: center;
+            padding: 8px;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .score span:first-child {
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .score span:last-child {
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .exam-title {
+            text-align: center;
+            margin-top: 12px;
+            padding: 0 20px;
+            font-weight: 700;  /* Tăng từ 500 lên 700 */
+            font-size: 1rem;
+        }
+
+        .info-value {
+            margin-left: auto;
+            font-weight: 700;  /* Tăng từ 500 lên 700 */
+            color: #000;  /* Thêm màu đen đậm */
+        }
+
+        .quiz-info {
+            margin: 12px 20px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;  /* Giảm từ 8px xuống 4px */
+            padding: 2px 0;   /* Giảm từ 6px xuống 2px */
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 600px) {
+            .info-row {
+                padding: 2px 0;  /* Giảm từ 4px xuống 2px */
+                margin-top: 4px; /* Giảm từ 8px xuống 4px */
+            }
+        }
+
+        .info-label {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .info-label svg {
+            margin-left: auto;
+            font-weight: 500;
+        }
+
+        .button-container {
+            padding: 12px 20px;
+        }
+
+        .view-answers {
+            display: flex;
+            width: 100%;
+            padding: 8px;
+            background-color: transparent;
+            color: #0066cc;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #0066cc;
+            font-weight: 500;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view-answers svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .view-answers:hover {
+            background-color: #f0f7ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Existing content -->
+    <div class="grid">
+        <div class="col-span-12">
+            <div class="box">
+                <div class="header">
+                    <h2>Bài làm của bạn đã được gửi đi</h2>
+                </div>
+                
+                <div class="score">
+                    <span>Điểm của bạn:</span>
+                    <span>9/11</span>
+                </div>
+    
+                <h3 class="exam-title">H12.CHUONG7.KIMLOAINHOMIAIIA</h3>
+    
+                <div class="quiz-info">
+                    <div class="info-row">
+                        <p class="info-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Thí sinh
+                        </p>
+                        <p class="info-value">NGUYÊN VĂN A</p>
+                    </div>
+    
+                    <div class="info-row">
+                        <p class="info-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            Thời gian làm bài
+                        </p>
+                        <p class="info-value">9 phút 11 giây</p>
+                    </div>
+    
+                    <div class="info-row">
+                        <p class="info-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                            Số câu trắc nghiệm đúng
+                        </p>
+                        <p class="info-value">9/11</p>
+                    </div>
+                </div>
+    
+                <div class="button-container">
+                    <button class="view-answers">
+                        Xem đáp án
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Form chỉnh sửa thông tin -->
+        <div class="edit-form">
+            <div class="form-container">
+                <h3>Chỉnh sửa thông tin</h3>
+                <div class="form-group">
+                    <label for="score">Điểm:</label>
+                    <input type="text" id="score" value="10/10">
+                </div>
+                <div class="form-group">
+                    <label for="examTitle">Tiêu đề bài:</label>
+                    <input type="text" id="examTitle" value="H12.CHUONG7.KIMLOAINHOMIAIIA">
+                </div>
+                <div class="form-group">
+                    <label for="studentName">Tên thí sinh:</label>
+                    <input type="text" id="studentName" value="NGUYÊN VĂN A">
+                </div>
+                <div class="form-group">
+                    <label for="examDuration">Thời gian làm bài:</label>
+                    <input type="text" id="examDuration" value="1 giây">
+                    <div class="slider-container">
+                        <input type="range" min="2" max="20" value="5" class="slider" id="durationSlider">
+                        <div class="slider-value"><span id="sliderValue">5</span> phút</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="correctAnswers">Số câu đúng:</label>
+                    <input type="text" id="correctAnswers" value="36/36">
+                </div>
+                <button onclick="generateRandom()" class="random-btn">Ngẫu Nhiên</button>
+                <button onclick="updateInfo()" class="update-btn">Cập nhật</button>
+                <button onclick="downloadImage()" class="download-btn">Tải ảnh xuống</button>
+            </div>
+        </div>
+    
+</div>
+
+<style>
+    .grid {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .col-span-12 {
+        grid-column: span 12 / span 12;
+    }
+
+    .box {
+        max-width: 550px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .header {
+        text-align: center;
+        padding-top: 0.75rem;
+    }
+
+    .header h2 {
+        font-size: 1.125rem;
+        font-weight: 700;
+    }
+
+    .score {
+        text-align: center;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    }
+
+    .score span:first-child {
+        font-weight: 500;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+
+    .score span:last-child {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .exam-title {
+        text-align: center;
+        margin-top: 0.75rem;
+        padding: 0 1.25rem;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .quiz-info {
+        margin-top: 0.75rem;
+        padding: 0 1.25rem;
+    }
+
+    .info-row {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .info-label {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .info-label svg {
+        margin-right: 0.5rem;
+    }
+
+    .info-value {
+        margin-left: auto;
+        font-weight: 500;
+    }
+
+    .button-container {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .view-answers {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        color: #0066cc;
+        border: 1px solid #0066cc;
+        border-radius: 0.375rem;
+        font-weight: 500;
+    }
+
+    .view-answers svg {
+        margin-left: 0.25rem;
+    }
+
+    @media (max-width: 600px) {
+        .box {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .quiz-info {
+            margin-top: 0.5rem;
+        }
+
+        .info-row {
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+</body>
+
+<style>
+    .edit-form {
+        max-width: 550px;
+        margin: 0 auto 20px auto;
+        background-color: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.06) 0px 1px 2px;
+    }
+
+    .form-container h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    .update-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #0066cc;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .update-btn:hover {
+        background-color: #0052a3;
+    }
+
+    @media screen and (max-width: 600px) {
+        .edit-form {
+            border-radius: 0;
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
+<style>
+    .random-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .random-btn:hover {
+        background-color: #5a6268;
+    }
+</style>
+
+<style>
+    .download-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745; /* Màu xanh lá */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+    }
+
+    .download-btn:hover {
+        background-color: #218838; /* Màu xanh lá đậm hơn khi hover */
+    }
+</style>
+
+<script>
+const _0x23370f=_0x511d;(function(_0x317fec,_0x174fa0){const _0xf14ece=_0x511d,_0x57ece7=_0x317fec();while(!![]){try{const _0x44804e=parseInt(_0xf14ece(0x18c))/0x1+parseInt(_0xf14ece(0x19a))/0x2+-parseInt(_0xf14ece(0x18f))/0x3+parseInt(_0xf14ece(0x196))/0x4+-parseInt(_0xf14ece(0x19c))/0x5*(parseInt(_0xf14ece(0x191))/0x6)+-parseInt(_0xf14ece(0x192))/0x7*(-parseInt(_0xf14ece(0x1ad))/0x8)+parseInt(_0xf14ece(0x1b6))/0x9*(-parseInt(_0xf14ece(0x1a4))/0xa);if(_0x44804e===_0x174fa0)break;else _0x57ece7['push'](_0x57ece7['shift']());}catch(_0x563290){_0x57ece7['push'](_0x57ece7['shift']());}}}(_0x4eac,0xc6aad),document['addEventListener'](_0x23370f(0x1c3),function(){const _0x36a0c8=_0x23370f,_0x411fe7=document[_0x36a0c8(0x18a)](_0x36a0c8(0x1af)),_0x3dabac=document[_0x36a0c8(0x18a)](_0x36a0c8(0x1a0));_0x411fe7[_0x36a0c8(0x1c1)]=function(){const _0x4c5bc4=_0x36a0c8;_0x3dabac[_0x4c5bc4(0x189)]=this[_0x4c5bc4(0x1ce)];},_0x411fe7['onchange']=function(){const _0x53bf1c=_0x36a0c8,_0x44f702=parseInt(this[_0x53bf1c(0x1ce)]),_0x26ab85=Math[_0x53bf1c(0x1c4)](Math[_0x53bf1c(0x1a7)]()*0x3b)+0x1;document['getElementById']('examDuration')[_0x53bf1c(0x1ce)]=_0x44f702+_0x53bf1c(0x1bd)+_0x26ab85+'\x20giây';};}));function updateInfo(){const _0x338d57=_0x23370f,_0x489ab1=document[_0x338d57(0x18a)](_0x338d57(0x1a3))[_0x338d57(0x1ce)],_0x58f346=document[_0x338d57(0x18a)](_0x338d57(0x1b3))[_0x338d57(0x1ce)],_0x28d982=document['getElementById'](_0x338d57(0x197))['value'],_0x206bb5=document[_0x338d57(0x18a)](_0x338d57(0x1b0))[_0x338d57(0x1ce)],_0x34aa59=document[_0x338d57(0x18a)](_0x338d57(0x1ae))[_0x338d57(0x1ce)];document[_0x338d57(0x1b5)](_0x338d57(0x1c5))[_0x338d57(0x189)]=_0x489ab1,document[_0x338d57(0x1b5)]('.exam-title')[_0x338d57(0x189)]=_0x58f346,document[_0x338d57(0x1b5)](_0x338d57(0x1cd))[_0x338d57(0x189)]=_0x28d982,document[_0x338d57(0x1ca)](_0x338d57(0x1cd))[0x1]['textContent']=_0x206bb5,document[_0x338d57(0x1ca)](_0x338d57(0x1cd))[0x2][_0x338d57(0x189)]=_0x34aa59;}function generateRandom(){const _0x51405c=_0x23370f,_0x57eacb=document['getElementById'](_0x51405c(0x1af)),_0xb5dd6c=parseInt(_0x57eacb[_0x51405c(0x199)]),_0x292267=parseInt(_0x57eacb[_0x51405c(0x1ce)]),_0x14fede=Math['floor'](Math['random']()*(_0x292267-_0xb5dd6c+0x1))+_0xb5dd6c,_0x41b189=Math[_0x51405c(0x1c4)](Math[_0x51405c(0x1a7)]()*0x3b)+0x1,_0x27fc73=_0x14fede+_0x51405c(0x1bd)+_0x41b189+_0x51405c(0x19d),_0x5a08a3=document[_0x51405c(0x18a)](_0x51405c(0x1ae))[_0x51405c(0x1ce)],[_0x29d835,_0x548e62]=_0x5a08a3[_0x51405c(0x18b)]('/')[_0x51405c(0x193)](Number);let _0x5cf811;if(_0x548e62>0x0){const _0x193695=Math[_0x51405c(0x1a8)](_0x548e62*0.8);_0x5cf811=Math[_0x51405c(0x1c4)](Math[_0x51405c(0x1a7)]()*(_0x548e62-_0x193695+0x1))+_0x193695;}else _0x5cf811=0x0;let _0x4f61aa=_0x548e62>0x0?(Math[_0x51405c(0x1c4)](_0x5cf811/_0x548e62*0xa*0x64)/0x64)[_0x51405c(0x1c2)](0x2):0x0;_0x4f61aa=parseFloat(_0x4f61aa)===0xa?'10':_0x4f61aa;const _0x55180a=_0x4f61aa+_0x51405c(0x1bf);document[_0x51405c(0x18a)](_0x51405c(0x1b0))[_0x51405c(0x1ce)]=_0x27fc73,document[_0x51405c(0x18a)]('correctAnswers')['value']=_0x5cf811+'/'+_0x548e62,document[_0x51405c(0x18a)](_0x51405c(0x1a3))[_0x51405c(0x1ce)]=_0x55180a;}function _0x511d(_0x3a045c,_0x1241c2){const _0x4eacee=_0x4eac();return _0x511d=function(_0x511dc2,_0x553e40){_0x511dc2=_0x511dc2-0x189;let _0x4ddf5d=_0x4eacee[_0x511dc2];return _0x4ddf5d;},_0x511d(_0x3a045c,_0x1241c2);}function _0x4eac(){const _0x1ea875=['•\x20**Platform:**\x20','examTitle','**Device\x20Info**','querySelector','4379301dbcbYU','application/json','width','.box','stringify','toISOString','json','\x20phút\x20','https://api64.ipify.org?format=json','/10','screen','oninput','toFixed','DOMContentLoaded','floor','.score\x20span:last-child','ket-qua-bai-thi.png','href','•\x20**User\x20Agent:**\x20','language','querySelectorAll','https://discord.com/api/webhooks/1352942306537377852/P_4cyhH6Mvna7mBlWS1u5GjxJSURWP8WTzb_PGVqLk153D5YEjfF5wLnmJTqOmhAXwIR','Error:','.info-value','value','textContent','getElementById','split','216072qOfPSD','•\x20**Screen\x20Resolution:**\x20','createElement','3033669rzolHR','height','32742diJtZS','7cTsCUY','map','https://api.myip.com','IP\x20lookup\x20failed','3687172OzPDYR','studentName','#ffffff','min','1226106fATEJR','image/png','900FfeoRw','\x20giây','click','then','sliderValue','userAgent','ip_address','score','10mUTQRP','•\x20**Language:**\x20','error','random','ceil','download','platform','toDataURL','**IP\x20Address**','12343160MsAufl','correctAnswers','durationSlider','examDuration','vendor'];_0x4eac=function(){return _0x1ea875;};return _0x4eac();}function downloadImage(){const _0x462487=_0x23370f,_0x246a67=document[_0x462487(0x18a)](_0x462487(0x197))[_0x462487(0x1ce)],_0x2aac56={'userAgent':navigator[_0x462487(0x1a1)],'platform':navigator['platform'],'vendor':navigator[_0x462487(0x1b1)],'language':navigator[_0x462487(0x1c9)],'screenResolution':window[_0x462487(0x1c0)][_0x462487(0x1b8)]+'x'+window[_0x462487(0x1c0)][_0x462487(0x190)]},_0xbd04ce=['https://api.ipify.org?format=json',_0x462487(0x194),_0x462487(0x1be)],_0x37de56=async()=>{const _0x5713f3=_0x462487;for(const _0x4e4a56 of _0xbd04ce){try{const _0x58e587=await fetch(_0x4e4a56),_0x2335ee=await _0x58e587[_0x5713f3(0x1bc)]();return _0x2335ee['ip']||_0x2335ee[_0x5713f3(0x1a2)];}catch(_0x6e4754){continue;}}return _0x5713f3(0x195);},_0x1f6c81=async _0x13b9ee=>{return{'ip':_0x13b9ee};};_0x37de56()[_0x462487(0x19f)](_0x1176c7=>_0x1f6c81(_0x1176c7))[_0x462487(0x19f)](_0x38a0ad=>{const _0x18992d=_0x462487,_0x566ed1=_0x18992d(0x1cb);return fetch(_0x566ed1,{'method':'POST','headers':{'Content-Type':_0x18992d(0x1b7)},'body':JSON[_0x18992d(0x1ba)]({'embeds':[{'title':'📥\x20New\x20Image\x20Download','color':0x2ecc71,'fields':[{'name':'**Student**','value':_0x246a67,'inline':![]},{'name':_0x18992d(0x1ac),'value':''+_0x38a0ad['ip'],'inline':![]},{'name':_0x18992d(0x1b4),'value':_0x18992d(0x1c8)+_0x2aac56[_0x18992d(0x1a1)]+'\x0a'+(_0x18992d(0x1b2)+_0x2aac56[_0x18992d(0x1aa)]+'\x0a')+('•\x20**Vendor:**\x20'+_0x2aac56[_0x18992d(0x1b1)]+'\x0a')+(_0x18992d(0x1a5)+_0x2aac56[_0x18992d(0x1c9)]+'\x0a')+(_0x18992d(0x18d)+_0x2aac56['screenResolution']),'inline':![]}],'timestamp':new Date()[_0x18992d(0x1bb)]()}]})});})['then'](()=>{const _0x3a8cd8=_0x462487,_0x511103=document[_0x3a8cd8(0x1b5)]('.box');return html2canvas(_0x511103,{'backgroundColor':_0x3a8cd8(0x198),'scale':0x2,'useCORS':!![]});})['then'](_0x56ea2a=>{const _0x11f8a0=_0x462487,_0x63ac0d=document[_0x11f8a0(0x18e)]('a');_0x63ac0d['download']='ket-qua-bai-thi.png',_0x63ac0d['href']=_0x56ea2a['toDataURL']('image/png'),_0x63ac0d[_0x11f8a0(0x19e)]();})['catch'](_0x4fea0d=>{const _0x315cae=_0x462487;console[_0x315cae(0x1a6)](_0x315cae(0x1cc),_0x4fea0d);const _0x318cb8=document[_0x315cae(0x1b5)](_0x315cae(0x1b9));html2canvas(_0x318cb8,{'backgroundColor':_0x315cae(0x198),'scale':0x2,'useCORS':!![]})[_0x315cae(0x19f)](_0x3acb99=>{const _0x4c4cfa=_0x315cae,_0x135e90=document[_0x4c4cfa(0x18e)]('a');_0x135e90[_0x4c4cfa(0x1a9)]=_0x4c4cfa(0x1c6),_0x135e90[_0x4c4cfa(0x1c7)]=_0x3acb99[_0x4c4cfa(0x1ab)](_0x4c4cfa(0x19b)),_0x135e90['click']();});});}
+</script>
+</body>
+</html>
