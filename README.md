@@ -32,8 +32,8 @@ Bạn có thể sửa đổi các trường sau trong biểu mẫu:
 
 ### Chức Năng Ngẫu Nhiên
 
--Tự động tính toán theo thang điểm 10 theo số câu chỉ định(18/20 là 9/10 điểm)
--Luôn ngẫu nhiên điểm trên 8/10
+- Tự động tính toán theo thang điểm 10 theo số câu chỉ định(18/20 là 9/10 điểm)
+- Luôn ngẫu nhiên điểm trên 8/10
 
 ### Thanh Trượt Thời Gian
 
